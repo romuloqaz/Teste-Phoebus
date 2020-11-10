@@ -1,11 +1,14 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,16 +21,33 @@ public class Hospital implements Serializable {
     private Integer id;
 
     @NotEmpty(message="Preenchimento obrigatório")
-    private String nome;
+    private String name;
 
     @NotEmpty(message="Preenchimento obrigatório")
     private String cnpj;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "hospital")
-    private Address address;
+    @NotEmpty(message="Preenchimento obrigatório")
+    private String number;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "hospital")
-    private Occupation occupation;
+    @NotEmpty(message="Preenchimento obrigatório")
+    private String cep;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    private String street;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    private String city;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    private String state;
+
+    private double latitude;
+    private double longitude;
+
+    private Double average;
+
+    @JsonFormat(pattern="dd/MM/yyyy")
+    private Date dateUpdate;
 
     @JsonIgnore
     @ManyToMany
@@ -37,14 +57,23 @@ public class Hospital implements Serializable {
     )
     private List<Resources> resources = new ArrayList<>();
 
-
     public Hospital() {
     }
 
-    public Hospital(Integer id, String nome, String cnpj) {
+    public Hospital(Integer id, String name, String cnpj, String number, String cep, String street, String city,
+                    String state, double latitude, double longitude, Double average, Date dateUpdate) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.cnpj = cnpj;
+        this.number = number;
+        this.cep = cep;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.average = average;
+        this.dateUpdate = dateUpdate;
     }
 
     public Integer getId() {
@@ -55,12 +84,12 @@ public class Hospital implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCnpj() {
@@ -71,20 +100,76 @@ public class Hospital implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getNumber() {
+        return number;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public Occupation getOccupation() {
-        return occupation;
+    public String getCep() {
+        return cep;
     }
 
-    public void setOccupation(Occupation occupation) {
-        this.occupation = occupation;
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getAverage() {
+        return average;
+    }
+
+    public void setAverage(Double average) {
+        this.average = average;
+    }
+
+    public Date getDateUpdate() {
+        return dateUpdate;
+    }
+
+    public void setDateUpdate(Date dateUpdate) {
+        this.dateUpdate = dateUpdate;
     }
 
     public List<Resources> getResources() {
