@@ -23,6 +23,7 @@ public class Address implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "hospital_id")
+    @MapsId
     private Hospital hospital;
 
     public Address() {
@@ -38,6 +39,10 @@ public class Address implements Serializable {
         this.latitude = latitude;
         this.longitude = longitude;
         this.hospital = hospital;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
     }
 
     public void setHospital(Hospital hospital) {
@@ -109,9 +114,7 @@ public class Address implements Serializable {
     }
 
 
-    public Hospital getHospital() {
-        return hospital;
-    }
+
 
     @Override
     public boolean equals(Object o) {

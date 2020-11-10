@@ -18,10 +18,10 @@ public class Hospital implements Serializable {
     private String nome;
     private String cnpj;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "hospital")
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "hospital")
     private Occupation occupation;
 
     @JsonIgnore

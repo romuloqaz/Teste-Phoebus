@@ -1,7 +1,6 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,13 +16,13 @@ public class Occupation implements Serializable {
     private Integer id;
     private double average;
 
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date dateUpdate;
 
     @OneToOne
     @JoinColumn(name = "hospital_id")
+    @MapsId
     private Hospital hospital;
-
 
     public Occupation() {
     }
@@ -33,6 +32,10 @@ public class Occupation implements Serializable {
         this.average = average;
         this.dateUpdate = dateUpdate;
         this.hospital = hospital;
+    }
+
+    public Hospital getHospital() {
+        return hospital;
     }
 
     public void setHospital(Hospital hospital) {
@@ -63,10 +66,6 @@ public class Occupation implements Serializable {
         this.dateUpdate = dateUpdate;
     }
 
-
-    public Hospital getHospital() {
-        return hospital;
-    }
 
     @Override
     public boolean equals(Object o) {
