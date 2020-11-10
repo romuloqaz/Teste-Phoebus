@@ -17,7 +17,6 @@ public class Address implements Serializable {
     private Integer id;
 
     @NotEmpty(message="Preenchimento obrigatório")
-    @Length(min=1, message="O numero precisa ser preenchido")
     private String number;
 
     @NotEmpty(message="Preenchimento obrigatório")

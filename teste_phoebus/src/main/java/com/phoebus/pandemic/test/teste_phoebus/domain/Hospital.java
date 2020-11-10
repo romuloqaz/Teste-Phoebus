@@ -71,8 +71,16 @@ public class Hospital implements Serializable {
         this.cnpj = cnpj;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Occupation getOccupation() {
+        return occupation;
     }
 
     public void setOccupation(Occupation occupation) {
