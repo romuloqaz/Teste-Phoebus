@@ -1,14 +1,14 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Hospital implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -17,20 +17,29 @@ public class Hospital implements Serializable {
     private Integer id;
     private String nome;
     private String cnpj;
+
+    @OneToOne
     private Address address;
+
+    @OneToOne
     private Occupation occupation;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "HOSPITAL_RESOURCES",
+            joinColumns = @JoinColumn(name = "hospital_id"),
+            inverseJoinColumns = @JoinColumn(name= "resources_id")
+    )
     private List<Resources> resources = new ArrayList<>();
 
 
     public Hospital() {
     }
 
-    public Hospital(Integer id, String nome, String cnpj, Address address, Occupation occupation) {
+    public Hospital(Integer id, String nome, String cnpj) {
         this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
-        this.address = address;
-        this.occupation = occupation;
     }
 
     public Integer getId() {
@@ -57,16 +66,8 @@ public class Hospital implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Occupation getOccupation() {
-        return occupation;
     }
 
     public void setOccupation(Occupation occupation) {

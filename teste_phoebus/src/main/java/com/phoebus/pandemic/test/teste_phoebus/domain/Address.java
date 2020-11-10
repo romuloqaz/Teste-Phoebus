@@ -1,11 +1,12 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -20,10 +21,14 @@ public class Address implements Serializable {
     private double latitude;
     private double longitude;
 
+    @OneToOne
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
+
     public Address() {
     }
 
-    public Address(Integer id, String number, String cep, String street, String city, String state, double latitude, double longitude) {
+    public Address(Integer id, String number, String cep, String street, String city, String state, double latitude, double longitude, Hospital hospital) {
         this.id = id;
         this.number = number;
         this.cep = cep;
@@ -32,6 +37,11 @@ public class Address implements Serializable {
         this.state = state;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.hospital = hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
     public Integer getId() {
@@ -96,6 +106,11 @@ public class Address implements Serializable {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+
+    public Hospital getHospital() {
+        return hospital;
     }
 
     @Override

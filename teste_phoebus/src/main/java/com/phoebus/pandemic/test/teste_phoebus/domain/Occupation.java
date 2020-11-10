@@ -1,12 +1,14 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Occupation implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -14,15 +16,27 @@ public class Occupation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private double average;
+
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date dateUpdate;
+
+    @OneToOne
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
+
 
     public Occupation() {
     }
 
-    public Occupation(Integer id, double average, Date dateUpdate) {
+    public Occupation(Integer id, double average, Date dateUpdate, Hospital hospital) {
         this.id = id;
         this.average = average;
         this.dateUpdate = dateUpdate;
+        this.hospital = hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
     public Integer getId() {
@@ -47,6 +61,11 @@ public class Occupation implements Serializable {
 
     public void setDateUpdate(Date dateUpdate) {
         this.dateUpdate = dateUpdate;
+    }
+
+
+    public Hospital getHospital() {
+        return hospital;
     }
 
     @Override
