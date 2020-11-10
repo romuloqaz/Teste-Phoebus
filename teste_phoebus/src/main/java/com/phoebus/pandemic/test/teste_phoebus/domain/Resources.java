@@ -2,6 +2,7 @@ package com.phoebus.pandemic.test.teste_phoebus.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,10 @@ public class Resources implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message="Preenchimento obrigatório")
     private String name;
+
     private Integer valueResource;
 
     @ManyToMany(mappedBy = "resources")

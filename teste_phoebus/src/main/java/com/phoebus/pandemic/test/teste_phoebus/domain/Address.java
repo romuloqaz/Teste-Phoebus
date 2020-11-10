@@ -1,8 +1,10 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,12 +15,26 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    @Length(min=1, message="O numero precisa ser preenchido")
     private String number;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    @Length(min=8, max = 8, message="O cep precisa ser preenchido com 8 numeros")
     private String cep;
+
+    @NotEmpty(message="Preenchimento obrigatório")
     private String street;
+
+    @NotEmpty(message="Preenchimento obrigatório")
     private String city;
+
+    @NotEmpty(message="Preenchimento obrigatório")
     private String state;
+
     private double latitude;
+
     private double longitude;
 
     @OneToOne

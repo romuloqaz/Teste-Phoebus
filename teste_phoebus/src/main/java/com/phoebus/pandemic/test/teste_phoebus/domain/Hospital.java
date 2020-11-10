@@ -3,6 +3,7 @@ package com.phoebus.pandemic.test.teste_phoebus.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,11 @@ public class Hospital implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message="Preenchimento obrigatório")
     private String nome;
+
+    @NotEmpty(message="Preenchimento obrigatório")
     private String cnpj;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "hospital")

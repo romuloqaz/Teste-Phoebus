@@ -15,7 +15,12 @@ public class HospitalService {
 
     public Hospital find(Integer id) {
         Optional<Hospital> obj = repo.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Hospital.class.getName()));
+    }
+    public Hospital insert (Hospital obj){
+        obj.setId(null);
+        return repo.save(obj);
     }
 
 }

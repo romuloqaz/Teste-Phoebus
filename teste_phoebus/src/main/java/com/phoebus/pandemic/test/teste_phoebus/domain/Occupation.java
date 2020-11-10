@@ -3,6 +3,7 @@ package com.phoebus.pandemic.test.teste_phoebus.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -14,6 +15,7 @@ public class Occupation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private double average;
 
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")

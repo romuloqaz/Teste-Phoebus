@@ -48,7 +48,7 @@ public class TestePhoebusApplication implements CommandLineRunner {
 		hospital2.setAddress(address2);
 
 		Occupation occupation1 = new Occupation(null,88.0, sdf.parse("10/10/2020 10:32"), hospital1);
-		Occupation occupation2 = new Occupation(null,90.0, sdf.parse("10/10/2020 19:35"), hospital2);
+		Occupation occupation2 = new Occupation(null,93.5, sdf.parse("10/10/2020 19:35"), hospital2);
 		hospital1.setOccupation(occupation1);
 		hospital2.setOccupation(occupation2);
 
