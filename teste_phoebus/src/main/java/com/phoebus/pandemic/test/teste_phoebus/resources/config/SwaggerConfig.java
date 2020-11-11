@@ -24,6 +24,8 @@ import java.util.Map;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    //http://localhost:8080/swagger-ui.html#/
+
     private final ResponseMessage m201 = customMessage1();
     private final ResponseMessage m204put = simpleMessage(204, "Atualização ok");
     private final ResponseMessage m204del = simpleMessage(204, "Deleção ok");

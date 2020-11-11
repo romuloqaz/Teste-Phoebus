@@ -1,6 +1,5 @@
 package com.phoebus.pandemic.test.teste_phoebus.resources;
 
-import com.phoebus.pandemic.test.teste_phoebus.domain.Hospital;
 import com.phoebus.pandemic.test.teste_phoebus.domain.Resources;
 import com.phoebus.pandemic.test.teste_phoebus.services.ResourceService;
 import io.swagger.annotations.ApiOperation;
