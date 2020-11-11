@@ -31,10 +31,10 @@ public class TestePhoebusApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Hospital hospital1 = new Hospital(null, "Hospital 1", "987466313", "998", "58900000", "rua 1", "cajazeiras",
-				"paraiba", -6.897299, -38.546489,90.5, sdf.parse("10/10/2020 10:32"));
+				"paraiba", -6.897299, -38.546489,90.5, sdf.parse("9/10/2020 10:32"));
 
 		Hospital hospital2 = new Hospital(null, "Hospital 2", "987466473", "977", "58900000", "rua 2", "cajazeiras",
-				"paraiba", -6.897799, -38.546489,80.0, sdf.parse("10/10/2020 17:32"));
+				"paraiba", -6.897799, -38.546489,85.0, sdf.parse("10/10/2020 17:32"));
 
 		Resources res1 = new Resources(null, "Médico", 3);
 		Resources res2 = new Resources(null, "Enfermeiro", 3);

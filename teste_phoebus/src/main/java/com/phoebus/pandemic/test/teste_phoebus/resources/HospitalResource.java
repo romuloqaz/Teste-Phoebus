@@ -68,4 +68,18 @@ public class HospitalResource {
         return list;
     }
 
+    @ApiOperation(value="Busca hospital com capacidade menor que 90% a mais tempo")
+    @RequestMapping(value = "/capacidadeMenor", method=RequestMethod.GET)
+    public List<Hospital> longerOccupation() {
+        List<Hospital> list = service.longerOccupation();
+        return list;
+    }
+
+    @ApiOperation(value="Busca hospital com capacidade maior que 90% a mais tempo")
+    @RequestMapping(value = "/capacidadeMaior", method=RequestMethod.GET)
+    public List<Hospital> higherOccupation() {
+        List<Hospital> list = service.higherOccupation();
+        return list;
+    }
+
 }

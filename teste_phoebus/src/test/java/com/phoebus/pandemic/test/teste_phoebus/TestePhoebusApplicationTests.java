@@ -57,12 +57,29 @@ class TestePhoebusApplicationTests {
 	}
 
 	@Test
-	@Order(3)
+	@Order(4)
 	public void loadIdResources() throws Exception {
 		mockMvc.perform(get("/recursos/1")
 				.contentType("application/json"))
 				.andExpect(status().isOk());
 	}
+
+	@Test
+	@Order(5)
+	public void lowerOccupation() throws Exception {
+		mockMvc.perform(get("/hospitais/capacidadeMenor")
+				.contentType("application/json"))
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	@Order(6)
+	public void higherOccupation() throws Exception {
+		mockMvc.perform(get("/hospitais/capacidadeMaior")
+				.contentType("application/json"))
+				.andExpect(status().isOk());
+	}
+
 
 //	@Test
 //	@Order(4)
