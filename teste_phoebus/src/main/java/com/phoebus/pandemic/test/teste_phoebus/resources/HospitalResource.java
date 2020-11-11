@@ -5,6 +5,7 @@ import com.phoebus.pandemic.test.teste_phoebus.domain.HospitalDTO;
 import com.phoebus.pandemic.test.teste_phoebus.repositories.HospitalRepository;
 import com.phoebus.pandemic.test.teste_phoebus.services.HospitalService;
 import com.phoebus.pandemic.test.teste_phoebus.services.UpdateHospital;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -25,12 +26,14 @@ public class HospitalResource {
     @Autowired
     private HospitalRepository hospitalRepository;
 
+    @ApiOperation(value="Busca hospital por id")
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
     public ResponseEntity<Hospital> find(@PathVariable Integer id) {
         Hospital obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
 
+    @ApiOperation(value="Atualiza ocupação do hospital")
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<HospitalDTO> atualizar(@PathVariable Integer id, @RequestBody @Valid UpdateHospital updateHospital) {
@@ -42,12 +45,14 @@ public class HospitalResource {
         return ResponseEntity.notFound().build();
     }
 
+    @ApiOperation(value="Busca hospital com capacidade maior que 90%")
     @RequestMapping(value = "/maior", method=RequestMethod.GET)
     public List<Hospital> findHighHospital() {
         List<Hospital> list = service.higherHospital();
         return list;
     }
 
+    @ApiOperation(value="Busca hospital com capacidade menor que 90%")
     @RequestMapping(value = "/menor", method=RequestMethod.GET)
     public List<Hospital> findMinorHospital() {
         List<Hospital> list = service.minorHospital();
