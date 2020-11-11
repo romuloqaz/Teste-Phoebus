@@ -2,9 +2,11 @@ package com.phoebus.pandemic.test.teste_phoebus.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class Hospital implements Serializable {
     @NotEmpty(message="Preenchimento obrigatório")
     private String name;
 
+    @CNPJ
+    @Column(unique=true)
     @NotEmpty(message="Preenchimento obrigatório")
     private String cnpj;
 
@@ -45,6 +49,8 @@ public class Hospital implements Serializable {
     private double latitude;
     private double longitude;
 
+    @Max(100)
+    @Min(0)
     private Double average;
 
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")

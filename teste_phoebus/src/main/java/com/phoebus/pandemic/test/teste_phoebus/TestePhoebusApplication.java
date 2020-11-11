@@ -35,14 +35,14 @@ public class TestePhoebusApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Hospital hospital1 = new Hospital(null, "Hospital 1", "987466313", "998", "58900000", "rua 1", "cajazeiras",
+		Hospital hospital1 = new Hospital(null, "Hospital 1", "66493771000176", "998", "58900000", "rua 1", "cajazeiras",
 				"paraiba", -6.897299, -38.546489,90.5, sdf.parse("9/10/2020 10:32"));
 
-		Hospital hospital2 = new Hospital(null, "Hospital 2", "987466473", "977", "58900000", "rua 2", "cajazeiras",
+		Hospital hospital2 = new Hospital(null, "Hospital 2", "59382689000109", "977", "58900000", "rua 2", "cajazeiras",
 				"paraiba", -6.897799, -38.546489,85.0, sdf.parse("10/10/2020 17:32"));
 
 
-		Hospital hospital3 = new Hospital(null, "Hospital 3", "987466473", "987", "58900000", "rua 3", "cajazeiras",
+		Hospital hospital3 = new Hospital(null, "Hospital 3", "49506646000134", "987", "58900000", "rua 3", "cajazeiras",
 				"paraiba", -6.897729, -38.547489,85.0, sdf.parse("11/10/2020 17:32"));
 
 		Resources res1 = new Resources(null, "Médico", 3);

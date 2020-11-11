@@ -1,11 +1,8 @@
 package com.phoebus.pandemic.test.teste_phoebus.services;
 
 import com.phoebus.pandemic.test.teste_phoebus.domain.Hospital;
-import com.phoebus.pandemic.test.teste_phoebus.domain.HospitalDTO;
-import com.phoebus.pandemic.test.teste_phoebus.domain.Negotiation;
 import com.phoebus.pandemic.test.teste_phoebus.repositories.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

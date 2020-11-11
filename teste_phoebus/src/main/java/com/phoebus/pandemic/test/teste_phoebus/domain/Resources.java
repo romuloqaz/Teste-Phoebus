@@ -1,6 +1,5 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;

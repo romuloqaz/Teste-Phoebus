@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScoreService {
@@ -16,6 +17,12 @@ public class ScoreService {
 
     public List<Score> findAll() {
         return repo.findAll();
+    }
+
+    public Score find (Integer id) {
+        Optional<Score> obj = repo.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Id: " + id + ", Tipo: " + Score.class.getName()));
     }
 
     @Transactional

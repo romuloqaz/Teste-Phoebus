@@ -7,6 +7,7 @@ import com.phoebus.pandemic.test.teste_phoebus.repositories.HospitalRepository;
 import com.phoebus.pandemic.test.teste_phoebus.services.HospitalService;
 import com.phoebus.pandemic.test.teste_phoebus.services.ResourceService;
 import com.phoebus.pandemic.test.teste_phoebus.services.UpdateHospital;
+import com.phoebus.pandemic.test.teste_phoebus.services.validation.utils.BR;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -58,10 +59,13 @@ public class HospitalResource {
     @ApiOperation(value="Insere Hospital")
     @RequestMapping(method=RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody Hospital obj) {
-        obj = hospitalService.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        if (BR.isValidCNPJ(obj.getCnpj())){
+            obj = hospitalService.insert(obj);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{id}").buildAndExpand(obj.getId()).toUri();
+            return ResponseEntity.created(uri).build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @ApiOperation(value="Atualiza ocupação do hospital")

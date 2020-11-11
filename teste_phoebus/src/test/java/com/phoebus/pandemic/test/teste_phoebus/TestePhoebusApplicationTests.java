@@ -104,6 +104,14 @@ class TestePhoebusApplicationTests {
 				.andExpect(status().isOk());
 	}
 
+	@Test
+	@Order(8)
+	public void getMediaResources() throws Exception {
+		mockMvc.perform(get("/hospitais/media/1")
+				.contentType("application/json"))
+				.andExpect(status().isOk());
+	}
+
 
 //	@Test
 //	@Order(4)

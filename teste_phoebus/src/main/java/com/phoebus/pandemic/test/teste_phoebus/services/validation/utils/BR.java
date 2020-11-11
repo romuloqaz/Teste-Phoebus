@@ -24,7 +24,6 @@ public class BR {
      */
     public static boolean isValidCNPJ(final String tin) {
         if ((tin == null) || (tin.length() != 14) || tin.matches(tin.charAt(0) + "{14}")) return false;
-
         final Integer digit1 = calculate(tin.substring(0, 12), weightTin);
         final Integer digit2 = calculate(tin.substring(0, 12) + digit1, weightTin);
         return tin.equals(tin.substring(0, 12) + digit1.toString() + digit2.toString());
