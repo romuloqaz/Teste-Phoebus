@@ -47,7 +47,7 @@ public class Hospital implements Serializable {
 
     private Double average;
 
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date dateUpdate;
 
     @JsonIgnore

@@ -36,6 +36,10 @@ public class TestePhoebusApplication implements CommandLineRunner {
 		Hospital hospital2 = new Hospital(null, "Hospital 2", "987466473", "977", "58900000", "rua 2", "cajazeiras",
 				"paraiba", -6.897799, -38.546489,85.0, sdf.parse("10/10/2020 17:32"));
 
+
+		Hospital hospital3 = new Hospital(null, "Hospital 3", "987466473", "987", "58900000", "rua 3", "cajazeiras",
+				"paraiba", -6.897729, -38.547489,85.0, sdf.parse("11/10/2020 17:32"));
+
 		Resources res1 = new Resources(null, "Médico", 3);
 		Resources res2 = new Resources(null, "Enfermeiro", 3);
 		Resources res3 = new Resources(null, "Respirador", 5);
@@ -44,9 +48,10 @@ public class TestePhoebusApplication implements CommandLineRunner {
 
 		hospital1.getResources().addAll(Arrays.asList(res1,res2,res3, res1));
 		hospital2.getResources().addAll(Arrays.asList(res1,res4,res5));
+		hospital3.getResources().addAll(Arrays.asList(res1,res4,res2));
 
 		resourcesRepository.saveAll(Arrays.asList(res1, res2, res3, res4, res5));
-		hospitalRepository.saveAll(Arrays.asList(hospital1,hospital2));
+		hospitalRepository.saveAll(Arrays.asList(hospital1,hospital2, hospital3));
 
 	}
 }
