@@ -2,8 +2,10 @@ package com.phoebus.pandemic.test.teste_phoebus;
 
 import com.phoebus.pandemic.test.teste_phoebus.domain.Hospital;
 import com.phoebus.pandemic.test.teste_phoebus.domain.Resources;
+import com.phoebus.pandemic.test.teste_phoebus.domain.Score;
 import com.phoebus.pandemic.test.teste_phoebus.repositories.HospitalRepository;
 import com.phoebus.pandemic.test.teste_phoebus.repositories.ResourcesRepository;
+import com.phoebus.pandemic.test.teste_phoebus.repositories.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +24,9 @@ public class TestePhoebusApplication implements CommandLineRunner {
 
 	@Autowired
 	private HospitalRepository hospitalRepository;
+
+	@Autowired
+	private ScoreRepository scoreRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestePhoebusApplication.class, args);
@@ -46,12 +51,15 @@ public class TestePhoebusApplication implements CommandLineRunner {
 		Resources res4 = new Resources(null, "Tomógrafo", 12);
 		Resources res5 = new Resources(null, "Ambulância", 10);
 
+		Score score = new Score(null, 15);
+
 		hospital1.getResources().addAll(Arrays.asList(res1,res3,res3));
 		hospital2.getResources().addAll(Arrays.asList(res1,res4));
 		hospital3.getResources().addAll(Arrays.asList(res3,res5));
 
 		resourcesRepository.saveAll(Arrays.asList(res1, res2, res3, res4, res5));
 		hospitalRepository.saveAll(Arrays.asList(hospital1,hospital2, hospital3));
+		scoreRepository.save(score);
 
 	}
 }

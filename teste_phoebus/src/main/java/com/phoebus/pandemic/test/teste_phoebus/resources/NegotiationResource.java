@@ -15,6 +15,7 @@ public class NegotiationResource {
 
     @Autowired
     private NegotiationService service;
+
     @ApiOperation(value="Lista todas as negociacoes")
     @RequestMapping(method=RequestMethod.GET)
     public ResponseEntity<List<Negotiation>>findAll() {
