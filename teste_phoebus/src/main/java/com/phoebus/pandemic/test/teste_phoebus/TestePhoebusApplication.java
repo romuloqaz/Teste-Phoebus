@@ -53,7 +53,7 @@ public class TestePhoebusApplication implements CommandLineRunner {
 
 		Score score = new Score(null, 15);
 
-		hospital1.getResources().addAll(Arrays.asList(res1,res3,res3));
+		hospital1.getResources().addAll(Arrays.asList(res1,res1,res1,res1,res1));
 		hospital2.getResources().addAll(Arrays.asList(res1,res4));
 		hospital3.getResources().addAll(Arrays.asList(res3,res5));
 

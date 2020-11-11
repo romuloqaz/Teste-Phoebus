@@ -46,6 +46,14 @@ public class HospitalService {
         return hospitals;
     }
 
+    public Float countHospital(){
+        return hospitalRepository.CountHospital();
+    }
+
+    public Float countResources(String nome){
+        return hospitalRepository.countResources(nome);
+    }
+
 
     public List<Hospital> minorHospital() {
         List<Hospital> hospitals= hospitalRepository.findMinorOccupation();
