@@ -42,7 +42,7 @@ public class TestePhoebusApplication implements CommandLineRunner {
 		Resources res4 = new Resources(null, "Tomógrafo", 12);
 		Resources res5 = new Resources(null, "Ambulância", 10);
 
-		hospital1.getResources().addAll(Arrays.asList(res1,res2,res3));
+		hospital1.getResources().addAll(Arrays.asList(res1,res2,res3, res1));
 		hospital2.getResources().addAll(Arrays.asList(res1,res4,res5));
 
 		resourcesRepository.saveAll(Arrays.asList(res1, res2, res3, res4, res5));
