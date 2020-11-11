@@ -6,14 +6,14 @@ import com.phoebus.pandemic.test.teste_phoebus.repositories.HospitalRepository;
 import com.phoebus.pandemic.test.teste_phoebus.services.HospitalService;
 import com.phoebus.pandemic.test.teste_phoebus.services.UpdateHospital;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.net.URI;
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/hospitais")
@@ -40,6 +40,18 @@ public class HospitalResource {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @RequestMapping(value = "/maior", method=RequestMethod.GET)
+    public List<Hospital> findHighHospital() {
+        List<Hospital> list = service.higherHospital();
+        return list;
+    }
+
+    @RequestMapping(value = "/menor", method=RequestMethod.GET)
+    public List<Hospital> findMinorHospital() {
+        List<Hospital> list = service.minorHospital();
+        return list;
     }
 
 }

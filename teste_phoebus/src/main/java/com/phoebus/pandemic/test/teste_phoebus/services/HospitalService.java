@@ -4,9 +4,11 @@ import com.phoebus.pandemic.test.teste_phoebus.domain.Hospital;
 import com.phoebus.pandemic.test.teste_phoebus.domain.HospitalDTO;
 import com.phoebus.pandemic.test.teste_phoebus.repositories.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,5 +35,14 @@ public class HospitalService {
         return hospital;
     }
 
+    public List<Hospital> higherHospital(){
+        List<Hospital> hospitals= hospitalRepository.findHigherOccupation();
+        return hospitals;
+    }
 
+
+    public List<Hospital> minorHospital() {
+        List<Hospital> hospitals= hospitalRepository.findMinorOccupation();
+        return hospitals;
+    }
 }
