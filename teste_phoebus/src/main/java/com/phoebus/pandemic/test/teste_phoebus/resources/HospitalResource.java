@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/hospitais")
@@ -25,6 +26,13 @@ public class HospitalResource {
 
     @Autowired
     private HospitalRepository hospitalRepository;
+
+    @ApiOperation(value="Lista todos os hospitais")
+    @RequestMapping(method=RequestMethod.GET)
+    public ResponseEntity<List<Hospital>>findAll() {
+        List<Hospital> list = service.findAll();
+        return ResponseEntity.ok().body(list);
+    }
 
     @ApiOperation(value="Busca hospital por id")
     @RequestMapping(value="/{id}", method= RequestMethod.GET)

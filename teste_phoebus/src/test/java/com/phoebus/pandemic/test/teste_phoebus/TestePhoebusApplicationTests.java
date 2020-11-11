@@ -80,6 +80,22 @@ class TestePhoebusApplicationTests {
 				.andExpect(status().isOk());
 	}
 
+	@Test
+	@Order(7)
+	public void getHospitals() throws Exception {
+		mockMvc.perform(get("/hospitais")
+				.contentType("application/json"))
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	@Order(8)
+	public void getNegotiations() throws Exception {
+		mockMvc.perform(get("/negociacoes")
+				.contentType("application/json"))
+				.andExpect(status().isOk());
+	}
+
 
 //	@Test
 //	@Order(4)

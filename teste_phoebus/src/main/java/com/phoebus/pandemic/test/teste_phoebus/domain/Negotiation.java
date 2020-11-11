@@ -1,14 +1,14 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Negotiation implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -16,8 +16,6 @@ public class Negotiation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date dateNegociation;
-    private List<Hospital> hospitals = new ArrayList<>();
-    private List<Resources> resources = new ArrayList<>();
 
     public Negotiation() {
     }
@@ -43,21 +41,7 @@ public class Negotiation implements Serializable {
         this.dateNegociation = dateNegociation;
     }
 
-    public List<Hospital> getHospitals() {
-        return hospitals;
-    }
 
-    public void setHospitals(List<Hospital> hospitals) {
-        this.hospitals = hospitals;
-    }
-
-    public List<Resources> getResources() {
-        return resources;
-    }
-
-    public void setResources(List<Resources> resources) {
-        this.resources = resources;
-    }
 
     @Override
     public boolean equals(Object o) {
