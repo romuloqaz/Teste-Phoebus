@@ -96,6 +96,14 @@ class TestePhoebusApplicationTests {
 				.andExpect(status().isOk());
 	}
 
+	@Test
+	@Order(8)
+	public void getScore() throws Exception {
+		mockMvc.perform(get("/pontos")
+				.contentType("application/json"))
+				.andExpect(status().isOk());
+	}
+
 
 //	@Test
 //	@Order(4)
