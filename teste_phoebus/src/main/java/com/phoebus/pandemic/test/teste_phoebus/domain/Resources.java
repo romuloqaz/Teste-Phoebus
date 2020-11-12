@@ -1,5 +1,7 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -11,6 +13,7 @@ import java.util.Objects;
 public class Resources implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

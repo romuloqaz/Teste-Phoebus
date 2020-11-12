@@ -1,31 +1,27 @@
 package com.phoebus.pandemic.test.teste_phoebus.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
-public class Negotiation implements Serializable {
+public class HospitalResourceDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date dateNegociation;
 
-    public Negotiation() {
+    private List<Resources> resources = new ArrayList<>();
+
+    public HospitalResourceDTO() {
     }
 
-    public Negotiation(Integer id, Date dateNegociation) {
-        this.id = id;
-        this.dateNegociation = dateNegociation;
+    public HospitalResourceDTO(Hospital hospital ) {
+        this.id = hospital.getId();
     }
 
     public Integer getId() {
@@ -36,22 +32,20 @@ public class Negotiation implements Serializable {
         this.id = id;
     }
 
-    public Date getDateNegociation() {
-        return dateNegociation;
+    public List<Resources> getResources() {
+        return resources;
     }
 
-    public void setDateNegociation(Date dateNegociation) {
-        this.dateNegociation = dateNegociation;
+    public void setResources(List<Resources> resources) {
+        this.resources = resources;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Negotiation that = (Negotiation) o;
-        return Objects.equals(id, that.id);
+        HospitalResourceDTO dto = (HospitalResourceDTO) o;
+        return Objects.equals(id, dto.id);
     }
 
     @Override
@@ -59,3 +53,6 @@ public class Negotiation implements Serializable {
         return Objects.hash(id);
     }
 }
+
+
+

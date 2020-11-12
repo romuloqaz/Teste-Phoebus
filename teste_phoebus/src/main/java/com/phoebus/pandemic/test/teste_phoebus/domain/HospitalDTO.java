@@ -23,7 +23,6 @@ public class HospitalDTO implements Serializable {
     public HospitalDTO() {
     }
 
-
     public HospitalDTO(Integer id, Double average, Date dateUpdate) {
         this.id = id;
         this.average = average;

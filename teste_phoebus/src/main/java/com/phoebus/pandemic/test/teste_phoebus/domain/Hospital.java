@@ -56,7 +56,6 @@ public class Hospital implements Serializable {
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date dateUpdate;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "HOSPITAL_RESOURCES",
             joinColumns = @JoinColumn(name = "hospital_id"),
