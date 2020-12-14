@@ -14,4 +14,4 @@ O teste consiste na criação de uma api para armazenar informações sobre hosp
 
 * Uma sugestão de implementação que foi feita é um enpoint que detalha os hospitais e quais recursos ele possui
 
-* Outras sugestões seriam personalização das excessões
+* Outras sugestões seriam personalização das exceções
